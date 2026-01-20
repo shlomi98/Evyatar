@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>האקדמיה לנוכלות (סאטירה)</title>
+  <style>
+    :root{
+      --bg:#0b0d12;
+      --card:#121622;
+      --text:#e9eefc;
+      --muted:#aab2c5;
+      --accent:#7cffc9;
+      --danger:#ff6b6b;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1100px;
+      --font: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background: radial-gradient(1000px 600px at 80% -10%, rgba(124,255,201,.12), transparent 60%),
+                  radial-gradient(900px 500px at 10% 10%, rgba(255,107,107,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+
+    .satire-banner{
+      border:1px solid rgba(255,107,107,.45);
+      background: rgba(255,107,107,.10);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      box-shadow: var(--shadow);
+    }
+    .satire-badge{
+      background: rgba(255,107,107,.18);
+      border:1px solid rgba(255,107,107,.55);
+      color: #ffd9d9;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+    .satire-banner p{margin:0; color:#ffd9d9}
+    .satire-banner small{display:block; color:#ffc2c2; margin-top:6px}
+
+    header{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:-120px -160px auto auto;
+      width:380px;
+      height:380px;
+      background: radial-gradient(circle, rgba(124,255,201,.18), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:7px 12px;
+      border:1px solid rgba(124,255,201,.35);
+      background: rgba(124,255,201,.08);
+      border-radius:999px;
+      color: var(--accent);
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    h1{margin:14px 0 10px; font-size: clamp(28px, 4vw, 44px)}
+    .lead{margin:0; color:var(--muted); font-size: clamp(15px, 2.1vw, 18px); max-width: 52ch}
+
+    .cta-row{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
+      cursor:pointer;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition: transform .06s ease, background .15s ease;
+      user-select:none;
+    }
+    .btn:hover{background: rgba(255,255,255,.09)}
+    .btn:active{transform: translateY(1px)}
+
+    .btn-accent{
+      border:1px solid rgba(124,255,201,.45);
+      background: rgba(124,255,201,.12);
+      color: #d8fff0;
+    }
+
+    .note{
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .side{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .img{
+      width:100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .side .cap{
+      padding: 14px 16px 16px;
+      border-top:1px solid var(--line);
+    }
+    .cap .t{margin:0; font-weight:800}
+    .cap .s{margin:6px 0 0; color:var(--muted)}
+
+    main{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2{margin:0 0 10px; font-size: 18px}
+    .bullets{margin:0; padding:0 18px 0 0; color:var(--muted)}
+    .bullets li{margin:10px 0}
+    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top: 12px}
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space:nowrap;
+    }
+
+    .quote{
+      margin: 0;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(124,255,201,.35);
+      background: rgba(124,255,201,.06);
+      color: #d8fff0;
+      font-weight: 700;
+    }
+
+    .grid2{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .footer{
+      margin-top: 18px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+
+    .tiny{
+      font-size: 12px;
+      color: rgba(233,238,252,.62);
+      margin-top: 8px;
+    }
+
+    @media (max-width: 920px){
+      header{grid-template-columns: 1fr}
+      main{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .img{aspect-ratio: 16 / 10}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <section class="hero">
+        <div class="kicker">האקדמיה לנוכלות | מהדורת צחוקים</div>
+        <h1>רוצים להתעשר<br>רוצים לעקוץ כמוני<br>בואו ללמוד איך להיות נוכלים</h1>
+        <p class="lead">
+          קורס שמלמד אותך איך למכור קורסים על איך למכור קורסים, לאנשים שקונים קורסים.
+          אם זה נשמע לך הגיוני, אתה בדיוק קהל היעד.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-accent" href="#syllabus" title="זה כפתור מזויף לסאטירה">יאללה נרשם (לא באמת)</a>
+          <a class="btn" href="#faq" title="עוד בדיחות">אבל מה אני מקבל</a>
+        </div>
+        <div class="note">אין טופס. אין תשלום. רק צחוקים.</div>
+      </section>
+
+      <aside class="side">
+        <img class="img" src="evyatar1.png" alt="תמונת פרודיה של יזם עם מזומן" />
+        <div class="cap">
+          <p class="t">לוק רציני זה 80 אחוז מהתוכן</p>
+          <p class="s">ה 20 אחוז הנותרים הם המילה “נוכלות”.</p>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section class="card" id="syllabus">
+        <h2>מה תלמד בפנים</h2>
+        <ul class="bullets">
+          <li>איך להגיד “יש לי שיטה” בלי שתהיה לך שיטה</li>
+          <li>איך להשתמש במילים: כסף, השקעות, ערך, העלמת מס, נקודות זכות (בלי להסביר כלום)</li>
+          <li>איך לענות לשאלה קשה עם משפט יפה וחלל ריק</li>
+          <li>איך להפוך כל ביקורת ל: “זה פשוט לא מתאים לכל אחד”</li>
+        </ul>
+        <div class="pillrow">
+          <span class="pill">זיוני מח</span>
+          <span class="pill">שקופיות עם חצים</span>
+          <span class="pill">קהילה סגורה שלא עונה</span>
+          <span class="pill">הבטחות באוויר</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>מי המרצה</h2>
+        <p style="margin:0; color:var(--muted)">
+          בן אדם עם חליפה, שעון, ותמונה שמריחה מכסף גם אם זה רק ריח של מסך.
+          זו לא הוכחה, זו אווירה.
+        </p>
+        <div style="margin-top:14px">
+          <img class="img" style="border-radius:14px; border:1px solid var(--line)" src="evyatar money.jpg" alt="תמונת סלפי פרודיה של יזם" />
+        </div>
+      </section>
+    </main>
+
+    <div class="grid2">
+      <section class="card">
+        <h2>מה מקבלים</h2>
+        <ul class="bullets">
+          <li>14 סרטונים של 8 דקות עם פתיח חזק וסיום בלי פואנטה</li>
+          <li>PDF עם הרבה מילים גדולות ומעט משמעות</li>
+          <li>קהילה סגורה שבה כולם מצליחים, עד ששואלים אותם איך</li>
+          <li>הודעת קול שבועית: “אחי, תמשיך”</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>משפטי מכירה שמנצחים הכל</h2>
+        <p class="quote">“אם אתה שואל שאלות, אתה עוד לא בשל”</p>
+        <p class="quote" style="margin-top:10px">“מי שמבין, כבר כאן”</p>
+        <p class="quote" style="margin-top:10px">“התוצאות אצל מי שמיישם”</p>
+        <p class="tiny">תרגיש חופשי להשתמש בזה על כל דבר, כולל על טוסטר.</p>
+      </section>
+    </div>
+
+    <section class="card" id="faq" style="margin-top:18px">
+      <h2>שאלות שאנשים שואלים (ואיך מתחמקים)</h2>
+      <ul class="bullets">
+        <li><b>יש הוכחות?</b> בטח. תראה כמה אני רגוע.</li>
+        <li><b>מה בדיוק עושים?</b> קודם כל מחליטים. אחר כך מיישמים. אחר כך מבינים.</li>
+        <li><b>למה המחיר כזה?</b> כי זה מסנן. מי שמתמקח הוא לא הקהל.</li>
+        <li><b>ואם לא מצליח?</b> זה אומר שלא רצית מספיק. חד משמעית.</li>
+      </ul>
+
+      <div class="cta-row" style="margin-top:14px">
+        <button class="btn btn-accent" type="button" onclick="fakeBuy()">לשלם עכשיו (כפתור בדיחה)</button>
+        <button class="btn" type="button" onclick="copyJoke()">להעתיק טקסט לוואטסאפ</button>
+      </div>
+
+
+  <script>
+    function fakeBuy(){
+      const el = document.getElementById('status');
+      el.textContent = 'ניסיון תשלום נכשל בהצלחה. המערכת זיהתה שיש לך היגיון.';
+    }
+
+    function copyJoke(){
+      const text =
+`רוצים להתעשר?
+רוצים לעקוץ כמוני?
+בואו ללמוד איך להיות נוכלים
+
+קורס שמלמד איך למכור קורסים על איך למכור קורסים, לאנשים שקונים קורסים.
+אין אחריות. יש אווירה.`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        document.getElementById('status').textContent = 'הועתק. עכשיו תשלח ותראה איך הוא נופל מצחוק.';
+      }).catch(() => {
+        document.getElementById('status').textContent = 'לא הצלחתי להעתיק אוטומטית. תסמן ידנית ותעתיק.';
+      });
+    }
+  </script>
+</body>
+</html>
